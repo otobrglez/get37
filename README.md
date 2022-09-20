@@ -2,7 +2,7 @@
 
 [get37] is a [Scala] / [ZIO] based web scraper specialised
 for ["mirroring"](https://www.eff.org/keeping-your-site-alive/mirroring-your-site), built as part
-of [technical assignment][./assignment.pdf] at [13|37][1337].
+of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 ## Resources
 
