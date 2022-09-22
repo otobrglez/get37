@@ -1,6 +1,6 @@
 package com.pinkstack.get37
 
-import com.pinkstack.get37.URLUtils.*
+import types.*
 import org.jsoup.Jsoup
 import org.jsoup.nodes.{Document, Element}
 import zhttp.service.{ChannelFactory, Client, EventLoopGroup}
@@ -13,16 +13,7 @@ import scala.jdk.CollectionConverters.*
 import scala.util.Try
 import os.*
 
-object GetApp extends ZIOAppDefault:
-  def program =
-    for
-//      startPage <- URLUtils.make("https://epic.blog")
-      startPage <- URLUtils.make("https://tretton37.com")
+object Get37App extends ZIOAppDefault:
+  def program = Spider.collect(NonEmptyURL("https://tretton37.com")) *> printLine("Completed.")
 
-      _ <- Spider.request(true)(startPage)
-      _ <- printLine("Completed.")
-    yield ()
-
-  def run = program.provide(
-    ChannelFactory.auto ++ EventLoopGroup.auto()
-  )
+  def run = program.provide(ChannelFactory.auto ++ EventLoopGroup.auto())
