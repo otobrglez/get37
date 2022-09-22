@@ -1,0 +1,24 @@
+<configuration>
+    <!--
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %-5level [%thread] - [%logger]- %msg%n</pattern>
+        </encoder>
+    </appender>
+    -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>false</withJansi>
+        <encoder>
+            <pattern>[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %X %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.pinkstack" level="${PINKSTACK_LOG_LEVEL:-INFO}"/>
+
+    <logger name="zhttp" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
