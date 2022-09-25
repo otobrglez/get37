@@ -4,10 +4,15 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import zhttp.http.Response
 import zio.ZIO.{attempt, collectAllPar, succeed}
-import zio.{Task, ZIO}
+import zio.Task
 
 import scala.jdk.CollectionConverters.*
 
+/** LinksParser is responsible for extraction of URLs out of Response object.
+  *   - LinksParser needs URL for rewriting as it will exclude all URLs that are external.
+  *   - LinksParser will also rewrite "relative URLs" into their absolute URLs with full domain included.
+  *   - Non-HTTP(S) URLS are also removed.
+  */
 object LinksParser:
   import types.*
   type Href = String
@@ -27,7 +32,7 @@ object LinksParser:
   private def parseHrefsWith(document: Document, cssQuery: String, attributeKey: String = "href"): Task[Array[Href]] =
     attempt(document.select(cssQuery).asScala.toArray.map(_.attr(attributeKey)))
 
-  def parse(url: NonEmptyURL, response: Response): ZIO[Any, Throwable, Set[NonEmptyURL]] =
+  def parse(url: NonEmptyURL, response: Response): Task[Set[NonEmptyURL]] =
     for
       document <- response.body.asString.map(Jsoup.parse)
       contentLinks = parseHrefsWith(document, "a[href]")

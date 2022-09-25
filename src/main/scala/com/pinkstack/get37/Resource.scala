@@ -1,27 +1,31 @@
 package com.pinkstack.get37
 
-import com.pinkstack.get37.types.NonEmptyURL
+import com.pinkstack.get37.types._
 import zhttp.http.Response
 import zio.Task
 import zio.ZIO.{attempt, ifZIO, succeed}
 
+/** All the files (HTML or non-HTML) that the spider deals with are named Resources. The main objective of Resource is
+  * to assure the correct persistence of data that gets fetched.
+  */
 object Resource:
-  sealed trait Result:
-    def path: os.Path
+  enum Result:
+    case Exists(p: os.Path)
+    case Created(p: os.Path)
+  import Result.*
 
-  final case class Exists(path: os.Path)  extends Result
-  final case class Created(path: os.Path) extends Result
-
-  private def urlToPath(url: NonEmptyURL, isHtml: Boolean = false): Task[os.Path] =
-    for
-      modPath <- succeed(if url.getPath.isBlank then "index" else url.getPath.replaceFirst("/", ""))
-      rawPath <- attempt(os.pwd / url.getHost / os.RelPath(modPath))
-      path    <- succeed(if rawPath.ext.isBlank && isHtml then os.Path(rawPath.toString + ".html") else rawPath)
-    yield path
-
+  /** Assures that content of Response object is properly persisted to local file-system.
+    * @param url
+    *   URL is needed so that a path can be computed.
+    * @param response
+    *   Response that is returned when Request is made
+    * @param isHtml
+    *   Tells the persistence logic if it should override and/or attach the right extensions etc.
+    * @return
+    */
   def persist(url: NonEmptyURL, response: Response, isHtml: Boolean = false): Task[Result] =
     for
-      path   <- urlToPath(url, isHtml)
+      path   <- url.toPath(isHtml)
       result <- ifZIO(succeed(os.exists(path)))(
         succeed(Exists(path)),
         response.body.asArray
