@@ -1,15 +1,15 @@
 # get37 🪠
 
-<div align="right">
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/otobrglez/get37/tree/master.svg?style=shield&circle-token=05d2aaa7bab5bf7af48f31089663c8ec1c220883)](https://dl.circleci.com/status-badge/redirect/gh/otobrglez/get37/tree/master)
-</div>
-
 [get37] is a [Scala] / [ZIO] based web scraper/spider built as part
 of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 <div align="center">
-![](https://github.com/otobrglez/get37/blob/master/get37.gif)
+
+![get37 in action](https://github.com/otobrglez/get37/blob/master/get37.gif)
+
 </div>
+
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/otobrglez/get37/tree/master.svg?style=shield&circle-token=05d2aaa7bab5bf7af48f31089663c8ec1c220883)](https://dl.circleci.com/status-badge/redirect/gh/otobrglez/get37/tree/master)
 
 ## Development & packaging
 
