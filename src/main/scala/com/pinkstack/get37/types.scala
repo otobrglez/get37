@@ -3,6 +3,7 @@ package com.pinkstack.get37
 import java.net.URL
 import scala.util.Try
 import zio.ZIO.{attempt, succeed}
+import zio.Console.printLine
 import zio.Task
 
 object types:
@@ -17,9 +18,13 @@ object types:
 
     def toPath(isHtml: Boolean = false): Task[os.Path] =
       for
-        modPath <- succeed(if url.getPath.isBlank then "index" else url.getPath.replaceFirst("/", ""))
-        rawPath <- attempt(os.pwd / url.getHost / os.RelPath(modPath))
-        path    <- succeed(if rawPath.ext.isBlank && isHtml then os.Path(rawPath.toString + ".html") else rawPath)
+        modPathA <- succeed(
+          if url.getPath.isBlank || url.getPath == "/" then "index"
+          else url.getPath.replaceFirst("/", "")
+        )
+        modPath  <- succeed(modPathA.replaceFirst("""(\/\.\.\/)|(\.\.\/)""", ""))
+        rawPath  <- attempt(os.pwd / url.getHost / os.RelPath(modPath))
+        path     <- succeed(if rawPath.ext.isBlank && isHtml then os.Path(rawPath.toString + ".html") else rawPath)
       yield path
 
   given Conversion[NonEmptyURL, String] with

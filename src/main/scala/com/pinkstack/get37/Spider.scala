@@ -34,7 +34,7 @@ object Spider:
             case (200, Some(contentType: String), response) if contentType.startsWith("text/html") =>
               for
                 _     <- Resource.persistHtml(url, response) flatMap printProgress(url, maxDepth)
-                links <- LinksParser.parse(url, response).map(_.filterNot(_ == url))
+                links <- LinksParser.parse(url, response)
                 _     <- ZIO.sleep(config.preFetchDelay.toInt.millis)
                 out   <- foreachParDiscard(links)(collect(maxDepth - 1)).withParallelism(config.maxFibers.toInt)
               yield out
