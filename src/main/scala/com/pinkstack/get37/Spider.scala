@@ -11,7 +11,7 @@ import zio.{durationInt, Console, IO, Task, ZIO}
 
 import java.io.IOException
 
-/** Spider is an object used for collecting the resources from a given URL. Collection starts at the initial url, the
+/** Spider is used for collecting the resources from a given URL. Collection starts at the initial url, the
   * URLs are then extracted from the resource if that resource is "html". Each URL is then visited. Visiting of
   * sequential URLs is spawned via new fibers. Requests are made via ZIO-HTTP, a ZIO wrapper on top of Netty. Some
   * optimisations are in place. For example, maxDepth defines how many layers deep should the collection go.

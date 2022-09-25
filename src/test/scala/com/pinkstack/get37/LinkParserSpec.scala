@@ -13,13 +13,13 @@ object LinkParserSpec extends zio.test.junit.JUnitRunnableSpec:
   private def containsUrl(s: String): Assertion[Iterable[NonEmptyURL]] = contains[NonEmptyURL](s)
   private def containsUrls(urls: String*)                              = urls.map(containsUrl).reduce((a, b) => a && b)
 
-  private def parseHtml(url: NonEmptyURL, html: String): Task[Set[NonEmptyURL]] =
+  private def parseFakeHtml(url: NonEmptyURL, html: String): Task[Set[NonEmptyURL]] =
     parse(url, Response.html(html, Status.Ok))
 
   def spec = suite("LinkParser")(
     test("parses a[href], [src] and link[href]") {
       assertZIO(
-        parseHtml(
+        parseFakeHtml(
           NonEmptyURL("https://epic.blog"),
           """<html>
             |<head>
@@ -54,6 +54,6 @@ object LinkParserSpec extends zio.test.junit.JUnitRunnableSpec:
       )
     },
     test("handles broken HTML")(
-      assertZIO(parseHtml(NonEmptyURL("https://epic.blog"), "br0ken"))(equalTo(Set.empty[NonEmptyURL]))
+      assertZIO(parseFakeHtml(NonEmptyURL("https://epic.blog"), "br0ken"))(equalTo(Set.empty[NonEmptyURL]))
     )
   )
