@@ -7,7 +7,7 @@ of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/otobrglez/get37/master/docs/get37.gif" alt="get37 in action" width="100%"/>
+<img src="https://raw.githubusercontent.com/otobrglez/get37/master/get37.gif" alt="get37 in action" width="100%"/>
 
 </div>
 
