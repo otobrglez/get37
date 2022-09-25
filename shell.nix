@@ -2,7 +2,7 @@ with (import <nixpkgs> {});
 
 mkShell {
   buildInputs = [
-    jdk17_headless
+    graalvm17-ce
     sbt
   ];
   shellHook = ''
