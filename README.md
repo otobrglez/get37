@@ -15,11 +15,8 @@ of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 ```bash
 $ java -jar target/*/get37.jar https://tretton37.com
-```
-
-
-```bash
 $ java -jar target/*/get37.jar --maxFibers 10 --preFetchDelay 70 --maxDepth 4 https://zio.dev
+$ java -jar target/*/get37.jar --help # for more help
 ```
 
 [get37] currently supports three configuration flags that can be passed along when the tool is started.
