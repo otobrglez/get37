@@ -27,10 +27,17 @@ $ java -jar target/*/get37.jar --help # for more help
 
 ## Development & packaging
 
+This project uses [Nix Shell (shell.nix)](./shell.nix) for project dependencies management. JDK and SBT are only dependencies.
+
 ```bash
-sbt ~run
-sbt assembly
-java -jar target/*/get37.jar
+$ sbt "run https://tretton37.com"
+```
+
+To build "über-JAR" this project uses [sbt-assembly](https://github.com/sbt/sbt-assembly) and [sbt-native-packager](https://github.com/sbt/sbt-native-packager) plugins.
+
+```bash
+$ sbt assembly
+$ java -jar target/*/get37.jar
 ```
 
 ## Resources
