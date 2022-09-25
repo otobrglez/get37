@@ -11,6 +11,23 @@ of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/otobrglez/get37/tree/master.svg?style=shield&circle-token=05d2aaa7bab5bf7af48f31089663c8ec1c220883)](https://dl.circleci.com/status-badge/redirect/gh/otobrglez/get37/tree/master)
 
+## Usage
+
+```bash
+$ java -jar target/*/get37.jar https://tretton37.com
+```
+
+
+```bash
+$ java -jar target/*/get37.jar --maxFibers 10 --preFetchDelay 70 --maxDepth 4 https://zio.dev
+```
+
+[get37] currently supports three configuration flags that can be passed along when the tool is started.
+
+- `maxFibers`, set to `10` by default tells the ZIO runtime how many [concurrent fibers](https://blog.rockthejvm.com/zio-fibers/) can be used when sub-requests are beeing made.
+- `preFetchDelay`, set to `10` milliseconds by defaul, adds a time delay before the sub-sequential requests are made.
+- `maxDepth`, set to `3` by default will serve as hard-limit when the spider tries to go deeper into the sites structure.
+
 ## Development & packaging
 
 ```bash
