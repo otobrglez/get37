@@ -3,6 +3,8 @@
 [get37] is a [Scala] / [ZIO] based web scraper/spider built as part
 of [technical assignment](./assignment.pdf) at [13|37][1337].
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/otobrglez/get37/tree/master.svg?style=shield&circle-token=05d2aaa7bab5bf7af48f31089663c8ec1c220883)](https://dl.circleci.com/status-badge/redirect/gh/otobrglez/get37/tree/master)
+
 ## Development & packaging
 
 ```bash
@@ -26,6 +28,9 @@ java -jar target/*/get37.jar
 ![Twitter Follow](https://img.shields.io/twitter/follow/otobrglez?style=social)
 
 [scala]: https://www.scala-lang.org/
+
 [zio]: https://zio.dev/
+
 [get37]: https://github.com/otobrglez/get37
+
 [1337]: https://1337.tech/
