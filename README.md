@@ -52,10 +52,12 @@ $ sbt test
 
 ## Dependencies
 
-- [ZIO](https://zio.dev) - High-performance, type-safe, composable asynchronous and concurrent programming library and framework for Scala.
-- [ZIO-CLI](https://github.com/zio/zio-cli) - Powerful command-line applications framework for ZIO.
-- [ZIO-HTTP (ex-ZHTTP)](https://github.com/zio/zio-http) - A scala library for building HTTP apps. It is powered by [ZIO](https://zio.dev) and [Netty](https://netty.io/) and aims at being the defacto solution for writing, highly scalable and performant web applications using idiomatic Scala.
+- [zio](https://zio.dev) - High-performance, type-safe, composable asynchronous and concurrent programming library and framework for Scala.
+- [zio-cli](https://github.com/zio/zio-cli) - Powerful command-line applications framework for ZIO.
+- [zio-http (ex-zhttp)](https://github.com/zio/zio-http) - A scala library for building HTTP apps. It is powered by [ZIO](https://zio.dev) and [Netty](https://netty.io/) and aims at being the defacto solution for writing, highly scalable and performant web applications using idiomatic Scala.
 - [jsoup](https://jsoup.org/) - is a Java library for working with real-world HTML. It provides a very convenient API for fetching URLs and extracting and manipulating data, using the best of HTML5 DOM methods and CSS selectors. Although in this project is only used for content/link extraction.
+- [os-lib](https://github.com/com-lihaoyi/os-lib) - a simple, flexible, high-performance Scala interface to common OS filesystem and subprocess APIs
+
 
 ## Resources
 
