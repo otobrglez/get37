@@ -13,6 +13,8 @@ of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 ## Usage
 
+After the project is [assembled (instructions)](#development) into "über-JAR" you can run it like this:
+
 ```bash
 $ java -jar target/*/get37.jar https://tretton37.com
 $ java -jar target/*/get37.jar --maxFibers 10 --preFetchDelay 70 --maxDepth 4 https://zio.dev
@@ -25,7 +27,7 @@ $ java -jar target/*/get37.jar --help # for more help
 - `preFetchDelay`, set to `10` milliseconds by defaul, adds a time delay before the sub-sequential requests are made.
 - `maxDepth`, set to `3` by default will serve as hard-limit when the spider tries to go deeper into the sites structure.
 
-## Development & packaging
+## Development
 
 This project uses [Nix Shell (shell.nix)](./shell.nix) for project dependencies management. JDK and SBT are only dependencies.
 
