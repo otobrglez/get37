@@ -40,6 +40,14 @@ $ sbt assembly
 $ java -jar target/*/get37.jar
 ```
 
+## Testing
+
+This project also comes with [tests](src/test) that can be invoked with `SBT`:
+
+```bash
+$ sbt test
+```
+
 ## Resources
 
 - [Experimenting with recursion and ZIO](https://blog.knoldus.com/experimenting-with-recursion-and-zio/)
