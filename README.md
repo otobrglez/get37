@@ -42,7 +42,7 @@ $ java -jar target/*/get37.jar
 
 ## Testing
 
-This project also comes with [tests](src/test) that can be invoked with `SBT`:
+This project also comes with [tests](src/test) that can be invoked with `SBT` and [CircleCI setup](https://app.circleci.com/pipelines/github/otobrglez/get37?branch=master).
 
 ```bash
 $ sbt test
