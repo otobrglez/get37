@@ -13,7 +13,7 @@ of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 ## 🏃‍♂️ Usage
 
-After the project is [assembled (instructions)](#-development) into "über-JAR" you can use it like this:
+After the project is [assembled (instructions)](#-development) into "über-JAR", you can simply use it like this:
 
 ```bash
 $ java -jar target/*/get37.jar https://tretton37.com
