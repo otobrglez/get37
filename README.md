@@ -11,9 +11,9 @@ of [technical assignment](./assignment.pdf) at [13|37][1337].
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/otobrglez/get37/tree/master.svg?style=shield&circle-token=05d2aaa7bab5bf7af48f31089663c8ec1c220883)](https://dl.circleci.com/status-badge/redirect/gh/otobrglez/get37/tree/master)
 
-## Usage
+## 🏃‍♂️ Usage
 
-After the project is [assembled (instructions)](#development) into "über-JAR" you can run it like this:
+After the project is [assembled (instructions)](#development) into "über-JAR" you can use it like this:
 
 ```bash
 $ java -jar target/*/get37.jar https://tretton37.com
@@ -27,7 +27,7 @@ $ java -jar target/*/get37.jar --help # for more help
 - `preFetchDelay`, set to `10` milliseconds by defaul, adds a time delay before the sub-sequential requests are made.
 - `maxDepth`, set to `3` by default will serve as hard-limit when the spider tries to go deeper into the sites structure.
 
-## Development
+## 🏗 Development
 
 This project uses [Nix Shell (shell.nix)](./shell.nix) for project dependencies management. JDK and SBT are only dependencies.
 
