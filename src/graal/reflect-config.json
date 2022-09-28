@@ -1,0 +1,88 @@
+[
+  {
+    "name": "java.lang.String"
+  },
+  {
+    "name": "java.lang.Thread"
+  },
+  {
+    "name": "java.lang.ClassValue"
+  },
+  {
+    "name": "java.lang.invoke.VarHandle",
+    "methods": [
+      {
+        "name": "releaseFence",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "sun.misc.Unsafe",
+    "allDeclaredFields": true
+  },
+  {
+    "name": "zio.Chunk$",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.Executor",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.FiberRef$",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.System$",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.ZEnvironment$",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.ZIO$",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.ZLayer",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  },
+  {
+    "name": "zio.package$",
+    "fields": [
+      {
+        "name": "0bitmap$1"
+      }
+    ]
+  }
+]

@@ -10,17 +10,26 @@ ThisBuild / scalaVersion := "3.2.0"
 lazy val root = (project in file("."))
   .enablePlugins(BuildInfoPlugin, JavaAppPackaging, AssemblyPlugin, GraalVMNativeImagePlugin)
   .settings(
-    name                             := "get37",
+    name := "get37",
     libraryDependencies ++= serviceDependencies,
     resolvers ++= projectResolvers,
-    assembly / mainClass             := Some("com.pinkstack.get37.Get37App"),
+
+    /** Main Class */
+    Compile / mainClass              := Some("com.pinkstack.get37.Get37NativeApp"),
+    Compile / packageBin / mainClass := (Compile / mainClass).value,
+    Compile / run / mainClass        := (Compile / mainClass).value,
+    assembly / mainClass             := (Compile / mainClass).value,
+    GraalVMNativeImage / mainClass   := (Compile / mainClass).value,
+
+    /** Assembly
+      */
     assembly / assemblyJarName       := "get37.jar",
     assembly / assemblyMergeStrategy := {
       // case "META-INF/io.netty.versions.properties" => MergeStrategy.last
       // case "module-info.class"                     => MergeStrategy.first
       // case x                                       => (assembly / assemblyMergeStrategy).value(x)
       case "META-INF/io.netty.versions.properties" => MergeStrategy.last
-      case x if x.contains("META-INF")             => (assemblyMergeStrategy in assembly).value.apply(x)
+      case x if x.contains("META-INF")             => (assembly / assemblyMergeStrategy).value.apply(x)
       case x if x.contains("io.netty")             => MergeStrategy.last
       case x                                       => MergeStrategy.first
     },
@@ -41,18 +50,24 @@ lazy val root = (project in file("."))
       "-language:postfixOps",
       "-language:implicitConversions",
       "-language:higherKinds",
-      "-explain",
-      "-release",
-      "11",
-      "-target:11"
+      "-explain"
     ),
 
     /** GraalVM
       */
+
+
+    // This works only on Linux
+    // fork                           := true,
+    // javaOptions += s"-agentlib:native-image-agent=config-output-dir=./src/graal/native-image",
+
     containerBuildImage            := Some("graalvm-ce:ol7-java11-21.3.3"),
     graalVMNativeImageGraalVersion := Some("22.2.0"),
+    // nativeImageOptions += s"-H:ReflectionConfigurationFiles=${target.value / "native-image-configs" / "reflect-config.json"}",
+    // +     nativeImageOptions += s"-H:ConfigurationFileDirectories=${target.value / "native-image-configs" }",
+    // +
     graalVMNativeImageOptions ++= Seq(
-      "--static",
+      // "--static",
       // "--libc=musl",
       "--no-server",
       "--no-fallback",
@@ -68,9 +83,13 @@ lazy val root = (project in file("."))
       "-H:+PrintClassInitialization",
       "-H:+RemoveSaturatedTypeFlows",
       "-H:EnableURLProtocols=http,https",
+      "-H:IncludeResources=.*\\.properties",
+      "-H:ReflectionConfigurationFiles=/opt/graalvm/stage/resources/reflect-config.json",
+      // s"-H:ConfigurationFileDirectories=/opt/graalvm/stage/resources",
       "-H:+JNI",
       "-Dio.netty.noUnsafe=true",
       "-Dio.netty.leakDetection.level=DISABLED",
+      "--initialize-at-build-time=scala.Symbol$",
       "--initialize-at-build-time=scala.runtime.Statics$VM",
       "--initialize-at-build-time=ch.qos.logback.classic.Level",
       "--initialize-at-build-time=ch.qos.logback.classic.Logger",
