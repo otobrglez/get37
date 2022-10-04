@@ -1,7 +1,7 @@
 # get37 🪠
 
 [get37] is a [Scala] / [ZIO] based web scraper/spider built as part
-of [technical assignment](./assignment.pdf) at [13|37][1337].
+of technical assignment at [13|37][1337].
 
 <div align="center">
 
