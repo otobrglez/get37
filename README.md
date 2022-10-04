@@ -61,6 +61,7 @@ $ sbt test
 
 ## Resources
 
+- [GraalVM w/ sbt-native-packager](https://sbt-native-packager.readthedocs.io/en/stable/formats/graalvm-native-image.html)
 - [Experimenting with recursion and ZIO](https://blog.knoldus.com/experimenting-with-recursion-and-zio/)
 - [5 lessons learned from my continuing awesome journey with ZIO](https://medium.com/wix-engineering/5-lessons-learned-from-my-continuing-awesome-journey-with-zio-66319d12ed7c)
 - [Guy Rutenberg - Make Offline Mirror of a Site using `wget`](https://www.guyrutenberg.com/2014/05/02/make-offline-mirror-of-a-site-using-wget/)
